@@ -1,0 +1,17 @@
+# Neon local configuration
+.neon
+
+# Node.js
+node_modules/
+
+# Environment files and secrets
+.env
+.env.*
+!.env.example
+
+# Java / Maven build output
+target/
+
+# IDE files
+.vscode/
+.idea/
