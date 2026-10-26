@@ -1,5 +1,13 @@
-export const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080')
-  .replace(/\/+$/, '')
+
+export const API_BASE_URL = (
+  import.meta.env.VITE_API_BASE_URL ||
+  (import.meta.env.DEV ? 'http://localhost:8080' : '')
+).replace(/\/+$/, '');
+
+if (!API_BASE_URL) {
+  throw new Error('VITE_API_BASE_URL is missing. Configure it in Vercel.');
+}
+
 
 export function createBasicAuthorization(username, password) {
   const bytes = new TextEncoder().encode(`${username}:${password}`)
